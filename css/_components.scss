@@ -34,60 +34,129 @@
  
 
  
-.brand
+.wrapper
 {   
+    overflow: hidden;
     // mobile carré
-    height: auto;
+    //height: auto;
+    //height: 250px !important;
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 6/5;
     height: auto;
-    background: url('../img/this/bg.png'), linear-gradient(320deg, #98CDF2 0%, #D9DAE5 100%);
-    background-size: auto 100%;
-    border-radius: 0;
+    
 
     // 2 cases
     @include breakpoint(min, small) {
-       //display: none !important;
        aspect-ratio: initial;
        width: 100%;
-       height: 260px;
-       background-size: cover;
+       height: 305px;
+       //background-size: cover;
     };
       
     // 3 cases
-    @include breakpoint(min, medium) {
-        display: block !important;
-        width: 100%;
-        height: 260px;
-        // background: url('../img/this/bg.png'), linear-gradient(320deg, #98CDF2 0%, #D9DAE5 100%);
-        background-size: 100%;
+    // @include breakpoint(min, medium) {
+    //     display: block !important;
+    //     width: 100%;
+    //     height: 260px;
+    //     background-size: 100%;
         
-        // border-radius: 8px;
+    // }
+    .col1
+    {
+        width: 16px;
+
+        @include breakpoint(min, 400px) {
+            width: 150px;
+        };
+
+        .logo
+        {
+            width: 65px;
+            left: 16px;
+            top: 11px;
+
+            @include breakpoint(min, 400px) {
+                width: 100px;
+                left: 22px;
+                top: 22px;
+            };
+        }
     }
+
+    .bg
+    {
+        background-image: url('../img/bg-texture.png');
+        background-size: cover;
+        background-position: center;
+
+        padding: 12px 0 0 12px;
+
+        top: 48px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        @include breakpoint(min, 400px) {
+            top: 25px;
+            padding: 20px 0 0 25px;
+        };
+    }
+    
+}
+
+.btn-container
+{
+
+    left: 12px;
+    z-index: 10;
+
+    @include breakpoint(min, 400px) {
+        left: 25px;
+    };
+
+    img
+    {
+        width: 116px;
+
+        @include breakpoint(min, 400px) {
+            width: 150px;
+        };
+    }
+}
+
+
+.phone-container   
+{
+    z-index: 5;
+    //left: 50%;
+    right: 5vw;
+    top: 50%;
+    transform: translateY(-55%);
+
+    @include breakpoint(min, 375px) {
+        transform: translateY(-55%);
+        right: 6vw;
+    };
+
+    @include breakpoint(min, 400px) {
+        top: 15px;
+        transform: none;
+    };
     
 }
 
 .phone
 {
-    left: 50%;
-    top: 33.33333%;
-    transform: translateX(-50%);
-    width: 260px;
+    width: 44vw;
+    max-width: initial;
 
-    // 2 cases
-    @include breakpoint(min, small) {
-       left: auto;
-       top: 20px;
-       right: 42px;
-       transform: none;
-       width: 254px !important;
-     };
+    @include breakpoint(min, 375px) {
+        width: 45vw;
+    };
 
-     // 3 cases
-    @include breakpoint(min, medium) {
-        width: 328px !important;
-        right: 15%;
-    }
+    @include breakpoint(min, 400px) {
+        width: 233px;
+    };
 }
 
 .wording2, .wording2b

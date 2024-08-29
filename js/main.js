@@ -6,34 +6,66 @@
         $('body').addClass('is-visible');
         // window.scrollTo(0, 0);
         setTimeout(function() { 
-         qrCodeTl.play();
+        //  qrCodeTl.play();
       }, 200);
     }, 1000);
 
 
     // INIT CONTROLLER
-	  var controller = new ScrollMagic.Controller();
-    var $qrCode = $('.qr-code');
-    var $h2 = $('h2');
+	var controller = new ScrollMagic.Controller();
+    var $phoneContainerInner = $('.phone-container-inner');
+    var $phoneImg1 = $('.phone-img-1');
+    var $phoneImg2 = $('.phone-img-2');
+    var $phoneImg3 = $('.phone-img-3');
+    var $phoneImg4 = $('.phone-img-4');
+    var $phoneImgWhite = $('.phone-img-white');
     
-    clearQr();
-    function clearQr(){
+    clearScene();
+    function clearScene(){
         //alert('lol');
-        var clearQrTl = new TimelineMax();
-        clearQrTl
-            .set($qrCode, { autoAlpha: 0, y: "+=10px", transformOrigin: "center center" })
-            .set($h2, { autoAlpha: 0, y: "+=10px", transformOrigin: "center center" });
-        return clearQrTl;
+        var clearSceneTl = new TimelineMax();
+        clearSceneTl
+            .set($phoneContainerInner, { autoAlpha: 0, y: "+=20px", transformOrigin: "center center" })
+            .set($phoneImg1, { autoAlpha: 0, transformOrigin: "center center" })
+            .set($phoneImg2, { autoAlpha: 0, transformOrigin: "center center" })
+            .set($phoneImg3, { autoAlpha: 0, transformOrigin: "center center" })
+            .set($phoneImg4, { autoAlpha: 0, transformOrigin: "center center" })
+            .set($phoneImgWhite, { autoAlpha: 0, transformOrigin: "center center" })
+        return clearSceneTl;
     }
 
-    var qrCodeTl = new TimelineMax({ paused: true })
-        .to($qrCode,1, { autoAlpha: 1, y: "-=10px", ease: Power4.easeInOut })
-        .to($h2,1, { autoAlpha: 1, y: "-=10px", ease: Power4.easeInOut });
+    var phoneSlideUp = new TimelineMax({ paused: false, repeat: 0 })
+        .to($phoneContainerInner, 0.75, { autoAlpha: 1, y: "-=20px", ease: Power4.easeInOut }, "+=1.0")
+
+    var qrCodeTl = new TimelineMax({ paused: false, repeat: -1 })
+       
+        .to($phoneImg1, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
+        .to($phoneImg1, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+
+        .to($phoneImg2, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
+        .to($phoneImg2, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+
+        .to($phoneImg3, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
+        .to($phoneImg3, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+
+        .to($phoneImg4, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
+        .to($phoneImg4, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0");
+        
+       
+        //.seek('stop1');
        
 
 
 
-
+        // const swiper = new Swiper('.swiper', {
+        //     direction: 'vertical',
+        //     loop: true,
+        //     effect: 'fade',
+        //     autoplay: {
+        //         delay: 2500,
+        //         disableOnInteraction: false,
+        //       }
+        // });
 
 
 
