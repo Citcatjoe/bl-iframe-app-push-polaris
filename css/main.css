@@ -325,6 +325,21 @@ header.headroom--unpinned {
   }
 }
 
+.phone-gif {
+  width: 44vw;
+  max-width: initial;
+}
+@media (min-width: 375px) {
+  .phone-gif {
+    width: 45vw;
+  }
+}
+@media (min-width: 400px) {
+  .phone-gif {
+    width: 233px;
+  }
+}
+
 .wording2, .wording2b {
   font-family: Inter !important;
 }

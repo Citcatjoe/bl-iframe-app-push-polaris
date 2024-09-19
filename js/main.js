@@ -10,6 +10,44 @@
       }, 200);
     }, 1000);
 
+    
+    var webview = false;
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if ((/iPhone|iPod|iPad/.test(userAgent) && !window.MSStream && !/Safari/.test(userAgent)) || 
+        (/Android/.test(userAgent) && /wv/.test(userAgent))) {
+        alert('webview');
+    }
+
+
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) 
+    {
+        $('#link').attr('href', 'https://apps.apple.com/ch/app/blick-fr/id1596317983?l=fr-FR');
+        $('.img-qr').hide();
+    } 
+    else if (/android/i.test(userAgent)) 
+    {
+        $('#link').attr('href', 'https://play.google.com/store/apps/details?id=ch.blick.news.fr');
+        $('.img-qr').hide();
+    }
+    else 
+    { 
+        // if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+        //     alert('mac');
+        // } else if (/Win32|Win64|Windows|WinCE/.test(userAgent)) {
+            
+        // } else {
+           
+        // }
+        $('#link').contents().unwrap();
+
+
+        // $('#link').attr('href', 'https://play.google.com/store/apps/details?id=ch.blick.news.fr'); 
+        $('.img-btn').hide();
+    }
+
 
     // INIT CONTROLLER
 	var controller = new ScrollMagic.Controller();
@@ -18,6 +56,7 @@
     var $phoneImg2 = $('.phone-img-2');
     var $phoneImg3 = $('.phone-img-3');
     var $phoneImg4 = $('.phone-img-4');
+    var $phoneImg5 = $('.phone-img-5');
     var $phoneImgWhite = $('.phone-img-white');
     
     clearScene();
@@ -26,30 +65,49 @@
         var clearSceneTl = new TimelineMax();
         clearSceneTl
             .set($phoneContainerInner, { autoAlpha: 0, y: "+=20px", transformOrigin: "center center" })
-            .set($phoneImg1, { autoAlpha: 0, transformOrigin: "center center" })
+            //.set($phoneImg1, { autoAlpha: 0, transformOrigin: "center center" })
             .set($phoneImg2, { autoAlpha: 0, transformOrigin: "center center" })
             .set($phoneImg3, { autoAlpha: 0, transformOrigin: "center center" })
             .set($phoneImg4, { autoAlpha: 0, transformOrigin: "center center" })
+            .set($phoneImg5, { autoAlpha: 0, transformOrigin: "center center" })
             .set($phoneImgWhite, { autoAlpha: 0, transformOrigin: "center center" })
         return clearSceneTl;
     }
 
     var phoneSlideUp = new TimelineMax({ paused: false, repeat: 0 })
-        .to($phoneContainerInner, 0.75, { autoAlpha: 1, y: "-=20px", ease: Power4.easeInOut }, "+=1.0")
+        .to($phoneContainerInner, 0.5, { autoAlpha: 1, y: "-=20px", ease: Power4.easeInOut }, "+=1.0")
 
     var qrCodeTl = new TimelineMax({ paused: false, repeat: -1 })
        
-        .to($phoneImg1, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
-        .to($phoneImg1, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+        // .to($phoneImg4, 0.5, { autoAlpha: 0, ease: Power4.easeInOut })
+        // .to($phoneImg1, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
 
-        .to($phoneImg2, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
-        .to($phoneImg2, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+        .to($phoneImg1, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+        .to($phoneImg2, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
 
-        .to($phoneImg3, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
-        .to($phoneImg3, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0")
+        .to($phoneImg2, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+        .to($phoneImg3, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
 
-        .to($phoneImg4, 0.75, { autoAlpha: 1, ease: Power4.easeInOut })
-        .to($phoneImg4, 0.75, { autoAlpha: 0, ease: Power4.easeInOut }, "+=3.0");
+        .to($phoneImg3, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+        .to($phoneImg4, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+
+        .to($phoneImg4, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+        .to($phoneImg5, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+        
+        .to($phoneImg5, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+        .to($phoneImg1, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3");
+
+        // .to($phoneImg1, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+        // .to($phoneImg1, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+
+        // .to($phoneImg2, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+        // .to($phoneImg2, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+
+        // .to($phoneImg3, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+        // .to($phoneImg3, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0")
+
+        // .to($phoneImg4, 0.5, { autoAlpha: 1, ease: Power4.easeInOut }, "-=0.3")
+        // .to($phoneImg4, 0.5, { autoAlpha: 0, ease: Power4.easeInOut }, "+=2.0");
         
        
         //.seek('stop1');
